@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/learning_group/db" VERSION="20130529" COMMENT="XMLDB file for Moodle blocks/learning_group"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="learning_group_sessions" COMMENT="learning_group_sessions table retrofitted from MySQL" NEXT="learning_group_dates">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="true" NEXT="userid"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="capacity"/>
+        <FIELD NAME="capacity" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="userid" NEXT="public"/>
+        <FIELD NAME="public" TYPE="int" LENGTH="2" NOTNULL="false" SEQUENCE="false" PREVIOUS="capacity" NEXT="allowoverbook"/>
+        <FIELD NAME="allowoverbook" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="public" NEXT="title"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="128" NOTNULL="false" SEQUENCE="false" PREVIOUS="allowoverbook" NEXT="details"/>
+        <FIELD NAME="details" TYPE="text" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="datetimeknown"/>
+        <FIELD NAME="datetimeknown" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="details" NEXT="adobeconnect_scoid"/>
+        <FIELD NAME="adobeconnect_scoid" TYPE="int" LENGTH="9" NOTNULL="false" SEQUENCE="false" PREVIOUS="datetimeknown" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="adobeconnect_scoid" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="learning_group_dates" COMMENT="learning_group_dates table retrofitted from MySQL" PREVIOUS="learning_group_sessions" NEXT="learning_group_signups">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="true" NEXT="sessionid"/>
+        <FIELD NAME="sessionid" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="timestart"/>
+        <FIELD NAME="timestart" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="sessionid" NEXT="timefinish"/>
+        <FIELD NAME="timefinish" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timestart"/>
+      </FIELDS>
+        <KEYS>
+            <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        </KEYS>
+    </TABLE>
+    <TABLE NAME="learning_group_signups" COMMENT="learning_group_signups table retrofitted from MySQL" PREVIOUS="learning_group_dates">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="true" NEXT="sessionid"/>
+        <FIELD NAME="sessionid" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="userid"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="false" PREVIOUS="sessionid" NEXT="mailedreminder"/>
+        <FIELD NAME="mailedreminder" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="false" PREVIOUS="userid" NEXT="notificationtype"/>
+        <FIELD NAME="notificationtype" TYPE="int" LENGTH="18" NOTNULL="true" SEQUENCE="false" PREVIOUS="mailedreminder" NEXT="statuscode"/>
+        <FIELD NAME="statuscode" TYPE="char" LENGTH="128" NOTNULL="false" SEQUENCE="false" PREVIOUS="notificationtype" NEXT="created"/>
+        <FIELD NAME="created" TYPE="int" LENGTH="18" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="statuscode"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
