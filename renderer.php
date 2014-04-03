@@ -3,7 +3,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-class mod_learning_group_renderer extends plugin_renderer_base
+class block_learning_group_renderer extends plugin_renderer_base
 {
     /**
      * Builds session list table given an array of sessions

@@ -31,7 +31,7 @@ echo $OUTPUT->footer();
 function print_session_list( ) {
     global $CFG, $USER, $DB, $OUTPUT, $PAGE;
 
-    $f2f_renderer = $PAGE->get_renderer('learning_group');
+    $f2f_renderer = $PAGE->get_renderer('block_learning_group');
 
     $timenow = time();
 
