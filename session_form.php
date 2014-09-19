@@ -27,7 +27,7 @@ class mod_learning_group_session_form extends moodleform
         $mform->addElement('text', 'title', 'Titel', 'size="60"');
         $mform->addRule('title', null, 'required', null, 'client');
         $mform->setType('title', PARAM_RAW);
-        $mform->setDefault('title', 'Mein Titel der Lenrgruppe');
+        $mform->setDefault('title', 'Name der Lerngruppe');
 
         // Checkbox Public or not
         $formarray = array();
