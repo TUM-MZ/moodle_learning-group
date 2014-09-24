@@ -69,7 +69,7 @@ $user->username = 'LearningGroup_'.$USER->email;
 $user->firstname = $USER->firstname;
 $user->lastname = $USER->lastname;
 
-if (!($usrprincipal = dfnvc_user_exists($aconnect, $user))) {
+if (!($usrprincipal = aconnect_user_exists($aconnect, $user))) {
     $usrprincipal = aconnect_create_user($aconnect, $user);
 }
 // Assign test user a meeting role
