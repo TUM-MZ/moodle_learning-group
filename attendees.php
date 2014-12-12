@@ -268,15 +268,15 @@ echo html_writer::link($url, get_string('goback', 'block_learning_group')) . htm
 if ($can_approve_requests) {
     echo html_writer::empty_tag('br', array('id' => 'unapproved'));
     if (!$requests) {
-        echo $OUTPUT->notification(get_string('noactionableunapprovedrequests', 'learning_group'));
+        echo $OUTPUT->notification(get_string('noactionableunapprovedrequests', 'block_learning_group'));
     }
     else {
         $can_book_user = (learning_group_session_has_capacity($session, $contextmodule) || $session->allowoverbook);
 
-        $OUTPUT->heading(get_string('unapprovedrequests', 'learning_group'));
+        $OUTPUT->heading(get_string('unapprovedrequests', 'block_learning_group'));
 
         if (!$can_book_user) {
-            echo html_writer::tag('p', get_string('cannotapproveatcapacity', 'learning_group'));
+            echo html_writer::tag('p', get_string('cannotapproveatcapacity', 'block_learning_group'));
         }
 
 
@@ -289,8 +289,8 @@ if ($can_approve_requests) {
         $table = new html_table();
         $table->width = "100%";
         $table->summary = get_string('requeststablesummary', 'learning_group');
-        $table->head = array(get_string('name'), get_string('timerequested', 'learning_group'),
-                            get_string('decidelater', 'learning_group'), get_string('decline', 'learning_group'), get_string('approve', 'learning_group'));
+        $table->head = array(get_string('name'), get_string('timerequested', 'block_learning_group'),
+                            get_string('decidelater', 'block_learning_group'), get_string('decline', 'block_learning_group'), get_string('approve', 'block_learning_group'));
         $table->align = array('left', 'center', 'center', 'center', 'center');
 
         foreach ($requests as $attendee) {
@@ -307,7 +307,7 @@ if ($can_approve_requests) {
 
         echo html_writer::table($table);
 
-        echo html_writer::tag('p', html_writer::empty_tag('input', array('type' => 'submit', 'value' => get_string('updaterequests', 'learning_group'))));
+        echo html_writer::tag('p', html_writer::empty_tag('input', array('type' => 'submit', 'value' => get_string('updaterequests', 'block_learning_group'))));
         echo html_writer::end_tag('form');
     }
 }
@@ -319,12 +319,12 @@ if ($can_approve_requests) {
 if (!$takeattendance && $can_view_cancellations && $cancellations) {
 
     echo html_writer::empty_tag('br');
-    echo $OUTPUT->heading(get_string('cancellations', 'learning_group'));
+    echo $OUTPUT->heading(get_string('cancellations', 'block_learning_group'));
 
     $table = new html_table();
-    $table->summary = get_string('cancellationstablesummary', 'learning_group');
-    $table->head = array(get_string('name'), get_string('timesignedup', 'learning_group'),
-                         get_string('timecancelled', 'learning_group'), get_string('cancelreason', 'learning_group'));
+    $table->summary = get_string('cancellationstablesummary', 'block_learning_group');
+    $table->head = array(get_string('name'), get_string('timesignedup', 'block_learning_group'),
+                         get_string('timecancelled', 'block_learning_group'), get_string('cancelreason', 'block_learning_group'));
     $table->align = array('left', 'center', 'center');
 
     foreach ($cancellations as $attendee) {
